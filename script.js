@@ -48,4 +48,41 @@
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", apply);
   else apply();
+
+  // Code copy buttons ([data-copy] -> element id). Minimal, no dependencies.
+  // Feedback is optimistic (immediate); clipboard + execCommand fallback run
+  // fire-and-forget so headless/denied clipboard permissions can't stall UI.
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "absolute";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+    } catch (e) {}
+  }
+  try {
+    document.querySelectorAll("[data-copy]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var el = document.getElementById(btn.getAttribute("data-copy"));
+        if (!el) return;
+        var prev = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = prev; }, 1600);
+        try {
+          var text = el.textContent || "";
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            var p = navigator.clipboard.writeText(text);
+            if (p && typeof p.catch === "function") p.catch(function () { fallbackCopy(text); });
+          } else {
+            fallbackCopy(text);
+          }
+        } catch (e) { fallbackCopy(el.textContent || ""); }
+      });
+    });
+  } catch (e) {}
 })();
