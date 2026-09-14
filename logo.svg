@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 60 1300 240" role="img" aria-label="V26 Inference logo">
+  <g font-family="Inter, Geist, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="300" font-size="148" letter-spacing="6" fill="#5b21b6">
+    <text x="70" y="228">V26</text>
+    <text x="640" y="228">Inference</text>
+  </g>
+  <g>
+    <polygon points="525,92 568,138 496,138" fill="#33373d"/>
+    <polygon points="480,152 572,152 538,186 446,186" fill="#5b21b6"/>
+    <polygon points="448,150 496,184 448,222" fill="#33373d"/>
+    <polygon points="540,196 628,196 600,272" fill="#33373d"/>
+  </g>
+</svg>
