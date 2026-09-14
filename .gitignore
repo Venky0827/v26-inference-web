@@ -2,3 +2,8 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# ruflo local
+.swarm/
+ruvector.db
+.claude-flow/

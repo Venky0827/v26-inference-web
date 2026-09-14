@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>V26 Inference — Affordable AI Inference for Developers</title>
   <meta name="description" content="V26 Inference is building affordable, developer-first access to powerful open AI models through simple APIs.">
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://v26-inference.com/">
   <meta property="og:title" content="V26 Inference — Affordable AI Inference for Developers">
   <meta property="og:description" content="V26 Inference is building affordable, developer-first access to powerful open AI models through simple APIs.">
@@ -25,7 +25,16 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <a class="brand" href="/" aria-label="V26 Inference home">
-      <span class="lockup"><span class="lockup-mark">V26</span><span class="lockup-sub">INFERENCE</span></span>
+      <span class="lockup" aria-label="V26 Inference">
+        <span class="lockup-text">V26</span>
+        <svg class="lockup-icon" viewBox="1.25 1.25 87.74 87.38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" shape-rendering="geometricPrecision">
+          <path fill="#4d1ebe" d="M85.46,40.21c-5.14,0-10.1,0-15.06,0c-4.92,0-9.84,0-14.76,0c-4.95,0-9.91-0.01-14.93,0 c-0.05,0.38-0.1,0.64-0.11,0.89c-0.01,0.89-0.01,1.79-0.01,2.68c0,13.51,0.01,27.02,0.01,40.52c0,0.47,0.05,0.96-0.09,1.58 c-0.31-0.24-0.53-0.37-0.7-0.55c-3.86-3.86-7.7-7.73-11.59-11.56c-0.55-0.55-0.62-1.13-0.62-1.81c0.01-6.13,0.01-12.26,0.01-18.38 c0.01-8.23,0.02-16.46,0.04-24.69c0-0.52-0.11-1.07,0.19-1.56c0.15-0.04,0.28-0.11,0.4-0.11c14.8,0,29.61,0,44.52,0 c4.12,4.13,8.29,8.3,12.46,12.48C85.3,39.77,85.32,39.91,85.46,40.21z"/>
+          <path fill="#343840" d="M46.61,1.25c6.16,6.17,12.3,12.33,18.49,18.53c-0.05,0.18-0.3,0.14-0.51,0.14c-0.4,0.01-0.8,0.01-1.21,0.01 c-11.26,0-22.52-0.01-33.79-0.02c-0.47,0-0.96,0.08-1.37-0.07c-0.13-0.31,0.05-0.42,0.16-0.53C32.39,15.06,45.68,1.9,46.61,1.25z"/>
+          <path fill="#343840" d="M20.28,65.65c-1.22-0.99-18.39-18.2-19.03-19.04c0.62-0.84,17.84-18.1,18.82-18.86 c0.28,0.1,0.22,0.35,0.23,0.56c0.01,0.31,0.01,0.63,0.01,0.94c0,11.63,0.01,23.26,0.01,34.89C20.32,64.58,20.3,65.02,20.28,65.65z"/>
+          <path fill="#343840" d="M48.67,88.63c0-13.45,0-26.8,0-40.22c0.28-0.06,0.53-0.13,0.78-0.15c0.36-0.03,0.71-0.01,1.07-0.01 c12.33,0,24.67-0.01,37-0.01c0.48,0,0.97-0.09,1.41,0.08c0.03,0.1,0.06,0.14,0.06,0.18c0,0.04-0.02,0.09-0.05,0.12 c-13.3,13.31-26.6,26.62-39.9,39.92C49,88.58,48.89,88.57,48.67,88.63z"/>
+        </svg>
+        <span class="lockup-text">Inference</span>
+      </span>
     </a>
     <nav aria-label="Primary">
       <a href="#why">Why V26</a>
@@ -176,22 +185,22 @@
         <div style="margin-top: 40px; max-width: 860px;">
           <div class="terminal">
             <div class="terminal-bar"><i></i><i></i><i></i><span>quickstart · planned interface</span><button class="copy-btn" data-copy="v26-code" type="button">Copy</button></div>
-            <pre><code id="v26-code">from openai import OpenAI
+            <pre><code id="v26-code"><span class="tok-kw">from</span> openai <span class="tok-kw">import</span> <span class="tok-fn">OpenAI</span>
 
-client = OpenAI(
-    api_key="v26_...",
-    base_url="https://api.v26-inference.com/v1"
-)
+<span class="tok-var">client</span> <span class="tok-punct">=</span> <span class="tok-fn">OpenAI</span><span class="tok-punct">(</span>
+    <span class="tok-param">api_key</span><span class="tok-punct">=</span><span class="tok-str">"v26_..."</span><span class="tok-punct">,</span>
+    <span class="tok-param">base_url</span><span class="tok-punct">=</span><span class="tok-str">"https://api.v26-inference.com/v1"</span>
+<span class="tok-punct">)</span>
 
-response = client.chat.completions.create(
-    model="qwen3.8-27b",
-    messages=[
-        {"role": "user",
-         "content": "Hello from V26!"}
-    ]
-)
+<span class="tok-var">response</span> <span class="tok-punct">=</span> <span class="tok-var">client</span><span class="tok-punct">.</span><span class="tok-var">chat</span><span class="tok-punct">.</span><span class="tok-var">completions</span><span class="tok-punct">.</span><span class="tok-fn">create</span><span class="tok-punct">(</span>
+    <span class="tok-param">model</span><span class="tok-punct">=</span><span class="tok-str">"qwen3.8-27b"</span><span class="tok-punct">,</span>
+    <span class="tok-param">messages</span><span class="tok-punct">=</span><span class="tok-punct">[</span>
+        <span class="tok-punct">{</span><span class="tok-str">"role"</span><span class="tok-punct">:</span> <span class="tok-str">"user"</span><span class="tok-punct">,</span>
+         <span class="tok-str">"content"</span><span class="tok-punct">:</span> <span class="tok-str">"Hello from V26!"</span><span class="tok-punct">}</span>
+    <span class="tok-punct">]</span>
+<span class="tok-punct">)</span>
 
-print(response.choices[0].message.content)</code></pre>
+<span class="tok-fn">print</span><span class="tok-punct">(</span><span class="tok-var">response</span><span class="tok-punct">.</span><span class="tok-var">choices</span><span class="tok-punct">[</span><span class="tok-num">0</span><span class="tok-punct">]</span><span class="tok-punct">.</span><span class="tok-var">message</span><span class="tok-punct">.</span><span class="tok-var">content</span><span class="tok-punct">)</span></code></pre>
             <div class="terminal-note">Planned API interface — beta endpoint not live yet.</div>
           </div>
         </div>
@@ -245,7 +254,11 @@ print(response.choices[0].message.content)</code></pre>
   <footer>
     <div class="footer-grid">
       <div class="footer-brand-col">
-        <span class="lockup"><span class="lockup-mark">V26</span><span class="lockup-sub">INFERENCE</span></span>
+        <span class="lockup" aria-label="V26 Inference">
+          <span class="lockup-text">V26</span>
+          <svg class="lockup-icon" viewBox="1.25 1.25 87.74 87.38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#4d1ebe" d="M85.46,40.21c-5.14,0-10.1,0-15.06,0c-4.92,0-9.84,0-14.76,0c-4.95,0-9.91-0.01-14.93,0 c-0.05,0.38-0.1,0.64-0.11,0.89c-0.01,0.89-0.01,1.79-0.01,2.68c0,13.51,0.01,27.02,0.01,40.52c0,0.47,0.05,0.96-0.09,1.58 c-0.31-0.24-0.53-0.37-0.7-0.55c-3.86-3.86-7.7-7.73-11.59-11.56c-0.55-0.55-0.62-1.13-0.62-1.81c0.01-6.13,0.01-12.26,0.01-18.38 c0.01-8.23,0.02-16.46,0.04-24.69c0-0.52-0.11-1.07,0.19-1.56c0.15-0.04,0.28-0.11,0.4-0.11c14.8,0,29.61,0,44.52,0 c4.12,4.13,8.29,8.3,12.46,12.48C85.3,39.77,85.32,39.91,85.46,40.21z"/><path fill="#343840" d="M46.61,1.25c6.16,6.17,12.3,12.33,18.49,18.53c-0.05,0.18-0.3,0.14-0.51,0.14c-0.4,0.01-0.8,0.01-1.21,0.01 c-11.26,0-22.52-0.01-33.79-0.02c-0.47,0-0.96,0.08-1.37-0.07c-0.13-0.31,0.05-0.42,0.16-0.53C32.39,15.06,45.68,1.9,46.61,1.25z"/><path fill="#343840" d="M20.28,65.65c-1.22-0.99-18.39-18.2-19.03-19.04c0.62-0.84,17.84-18.1,18.82-18.86 c0.28,0.1,0.22,0.35,0.23,0.56c0.01,0.31,0.01,0.63,0.01,0.94c0,11.63,0.01,23.26,0.01,34.89C20.32,64.58,20.3,65.02,20.28,65.65z"/><path fill="#343840" d="M48.67,88.63c0-13.45,0-26.8,0-40.22c0.28-0.06,0.53-0.13,0.78-0.15c0.36-0.03,0.71-0.01,1.07-0.01 c12.33,0,24.67-0.01,37-0.01c0.48,0,0.97-0.09,1.41,0.08c0.03,0.1,0.06,0.14,0.06,0.18c0,0.04-0.02,0.09-0.05,0.12 c-13.3,13.31-26.6,26.62-39.9,39.92C49,88.58,48.89,88.57,48.67,88.63z"/></svg>
+          <span class="lockup-text">Inference</span>
+        </span>
         <p>Affordable AI inference for developers.</p>
         <p>Questions, partnerships or early enterprise interest? <a href="mailto:hello@v26-inference.com">hello@v26-inference.com</a></p>
       </div>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V26 Inference — Logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  @font-face{
+    font-family:'Nexon';
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON%20Lv1%20Gothic%20OTF.woff') format('woff');
+    font-weight:300 700;
+    font-display:swap;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family: 'Nexon','NEXON Lv1 Gothic', Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background:#f6f7f8;
+    color:#111;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:40px 20px;
+  }
+  .caption{
+    margin-top:18px;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#9aa0a6;
+    font-weight:500;
+  }
+  .logo-wrap{
+    background:#ffffff;
+    border:1px solid #eceef2;
+    border-radius:18px;
+    padding:48px 56px;
+    box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 20px 40px -16px rgba(16,24,40,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px; /* zoomed ref: ~8px white gap 6↔triangle and triangle↔I — optical, not 0 */
+    line-height:1;
+    user-select:none;
+  }
+  .logo-text{
+    font-family: 'Nexon','NEXON Lv1 Gothic', Inter, system-ui, -apple-system, sans-serif;
+    font-weight:700;
+    font-size:68px;
+    letter-spacing:-0.02em;
+    color:#4d1ebe;
+    line-height:1;
+    display:inline-block;
+    transform:translateY(1px);
+    -webkit-font-smoothing:antialiased;
+  }
+  .logo-text.inference{
+    font-weight:700;
+    letter-spacing:-0.02em;
+    margin-left:0;
+  }
+  .logo-mark{
+    width:68px; /* big as V26 — same as cap-height */
+    height:68px;
+    flex:none;
+    display:block;
+    overflow:visible;
+    transform:translateY(2px);
+    margin:0; /* no extra gap */
+  }
+  .row{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:26px;
+  }
+  .logo-wrap.dark{
+    background:#0a0a0f;
+    border-color:#1e1e26;
+    box-shadow: 0 20px 40px -16px rgba(0,0,0,.5);
+  }
+  .logo-wrap.dark .logo-text{ color:#6d3df0; }
+  .logo-wrap.mini{
+    padding:26px 28px;
+    border-radius:14px;
+  }
+  .logo-wrap.mini .logo-text{ font-size:36px; }
+  .logo-wrap.mini .logo-mark{ width:36px; height:36px; margin:0; }
+  .logo-wrap.mini .logo{ gap:0; }
+
+  @media (max-width:640px){
+    .logo-wrap{ padding:32px 22px; }
+    .logo-text{ font-size:42px; }
+    .logo-mark{ width:34px; height:34px; }
+    .logo{ gap:8px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Primary lockup — pixel-perfect to reference image -->
+  <div class="logo-wrap" aria-label="V26 Inference logo">
+    <div class="logo" role="img" aria-label="V26 Inference">
+      <span class="logo-text">V26</span>
+
+      <!-- Exact icon from Logomakerr (4 paths, 1 purple + 3 graphite) -->
+      <svg class="logo-mark" viewBox="1.25 1.25 87.74 87.38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" shape-rendering="geometricPrecision">
+        <!-- top small graphite triangle -->
+        <path fill="#343840" d="M46.61,1.25c6.16,6.17,12.3,12.33,18.49,18.53c-0.05,0.18-0.3,0.14-0.51,0.14c-0.4,0.01-0.8,0.01-1.21,0.01 c-11.26,0-22.52-0.01-33.79-0.02c-0.47,0-0.96,0.08-1.37-0.07c-0.13-0.31,0.05-0.42,0.16-0.53C32.39,15.06,45.68,1.9,46.61,1.25z"/>
+        <!-- upper + lower purple (single combined shape) -->
+        <path fill="#4d1ebe" d="M85.46,40.21c-5.14,0-10.1,0-15.06,0c-4.92,0-9.84,0-14.76,0c-4.95,0-9.91-0.01-14.93,0 c-0.05,0.38-0.1,0.64-0.11,0.89c-0.01,0.89-0.01,1.79-0.01,2.68c0,13.51,0.01,27.02,0.01,40.52c0,0.47,0.05,0.96-0.09,1.58 c-0.31-0.24-0.53-0.37-0.7-0.55c-3.86-3.86-7.7-7.73-11.59-11.56c-0.55-0.55-0.62-1.13-0.62-1.81c0.01-6.13,0.01-12.26,0.01-18.38 c0.01-8.23,0.02-16.46,0.04-24.69c0-0.52-0.11-1.07,0.19-1.56c0.15-0.04,0.28-0.11,0.4-0.11c14.8,0,29.61,0,44.52,0 c4.12,4.13,8.29,8.3,12.46,12.48C85.3,39.77,85.32,39.91,85.46,40.21z"/>
+        <!-- left small graphite triangle -->
+        <path fill="#343840" d="M20.28,65.65c-1.22-0.99-18.39-18.2-19.03-19.04c0.62-0.84,17.84-18.1,18.82-18.86 c0.28,0.1,0.22,0.35,0.23,0.56c0.01,0.31,0.01,0.63,0.01,0.94c0,11.63,0.01,23.26,0.01,34.89C20.32,64.58,20.3,65.02,20.28,65.65z"/>
+        <!-- lower large graphite triangle -->
+        <path fill="#343840" d="M48.67,88.63c0-13.45,0-26.8,0-40.22c0.28-0.06,0.53-0.13,0.78-0.15c0.36-0.03,0.71-0.01,1.07-0.01 c12.33,0,24.67-0.01,37-0.01c0.48,0,0.97-0.09,1.41,0.08c0.03,0.1,0.06,0.14,0.06,0.18c0,0.04-0.02,0.09-0.05,0.12 c-13.3,13.31-26.6,26.62-39.9,39.92C49,88.58,48.89,88.57,48.67,88.63z"/>
+      </svg>
+
+      <span class="logo-text inference">Inference</span>
+    </div>
+  </div>
+  <div class="caption">V26 Inference — primary lockup · #4D1EBE · Nexon · icon 68px (same as V26) · gap 0</div>
+
+  <div class="row">
+    <div class="logo-wrap dark mini" aria-label="Dark variant">
+      <div class="logo" role="img" aria-label="V26 Inference dark">
+        <span class="logo-text">V26</span>
+        <svg class="logo-mark" viewBox="1.25 1.25 87.74 87.38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#9a8af0" d="M46.61,1.25c6.16,6.17,12.3,12.33,18.49,18.53c-0.05,0.18-0.3,0.14-0.51,0.14c-0.4,0.01-0.8,0.01-1.21,0.01 c-11.26,0-22.52-0.01-33.79-0.02c-0.47,0-0.96,0.08-1.37-0.07c-0.13-0.31,0.05-0.42,0.16-0.53C32.39,15.06,45.68,1.9,46.61,1.25z"/>
+          <path fill="#6d3df0" d="M85.46,40.21c-5.14,0-10.1,0-15.06,0c-4.92,0-9.84,0-14.76,0c-4.95,0-9.91-0.01-14.93,0 c-0.05,0.38-0.1,0.64-0.11,0.89c-0.01,0.89-0.01,1.79-0.01,2.68c0,13.51,0.01,27.02,0.01,40.52c0,0.47,0.05,0.96-0.09,1.58 c-0.31-0.24-0.53-0.37-0.7-0.55c-3.86-3.86-7.7-7.73-11.59-11.56c-0.55-0.55-0.62-1.13-0.62-1.81c0.01-6.13,0.01-12.26,0.01-18.38 c0.01-8.23,0.02-16.46,0.04-24.69c0-0.52-0.11-1.07,0.19-1.56c0.15-0.04,0.28-0.11,0.4-0.11c14.8,0,29.61,0,44.52,0 c4.12,4.13,8.29,8.3,12.46,12.48C85.3,39.77,85.32,39.91,85.46,40.21z"/>
+          <path fill="#9a8af0" d="M20.28,65.65c-1.22-0.99-18.39-18.2-19.03-19.04c0.62-0.84,17.84-18.1,18.82-18.86 c0.28,0.1,0.22,0.35,0.23,0.56c0.01,0.31,0.01,0.63,0.01,0.94c0,11.63,0.01,23.26,0.01,34.89C20.32,64.58,20.3,65.02,20.28,65.65z"/>
+          <path fill="#9a8af0" d="M48.67,88.63c0-13.45,0-26.8,0-40.22c0.28-0.06,0.53-0.13,0.78-0.15c0.36-0.03,0.71-0.01,1.07-0.01 c12.33,0,24.67-0.01,37-0.01c0.48,0,0.97-0.09,1.41,0.08c0.03,0.1,0.06,0.14,0.06,0.18c0,0.04-0.02,0.09-0.05,0.12 c-13.3,13.31-26.6,26.62-39.9,39.92C49,88.58,48.89,88.57,48.67,88.63z"/>
+        </svg>
+        <span class="logo-text inference">Inference</span>
+      </div>
+    </div>
+    <div class="logo-wrap mini" aria-label="Monochrome small">
+      <div class="logo" role="img" aria-label="V26 Inference small">
+        <span class="logo-text" style="color:#0a0a0f;">V26</span>
+        <svg class="logo-mark" viewBox="1.25 1.25 87.74 87.38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#0a0a0f" d="M46.61,1.25c6.16,6.17,12.3,12.33,18.49,18.53c-0.05,0.18-0.3,0.14-0.51,0.14c-0.4,0.01-0.8,0.01-1.21,0.01 c-11.26,0-22.52-0.01-33.79-0.02c-0.47,0-0.96,0.08-1.37-0.07c-0.13-0.31,0.05-0.42,0.16-0.53C32.39,15.06,45.68,1.9,46.61,1.25z"/>
+          <path fill="#0a0a0f" d="M85.46,40.21c-5.14,0-10.1,0-15.06,0c-4.92,0-9.84,0-14.76,0c-4.95,0-9.91-0.01-14.93,0 c-0.05,0.38-0.1,0.64-0.11,0.89c-0.01,0.89-0.01,1.79-0.01,2.68c0,13.51,0.01,27.02,0.01,40.52c0,0.47,0.05,0.96-0.09,1.58 c-0.31-0.24-0.53-0.37-0.7-0.55c-3.86-3.86-7.7-7.73-11.59-11.56c-0.55-0.55-0.62-1.13-0.62-1.81c0.01-6.13,0.01-12.26,0.01-18.38 c0.01-8.23,0.02-16.46,0.04-24.69c0-0.52-0.11-1.07,0.19-1.56c0.15-0.04,0.28-0.11,0.4-0.11c14.8,0,29.61,0,44.52,0 c4.12,4.13,8.29,8.3,12.46,12.48C85.3,39.77,85.32,39.91,85.46,40.21z"/>
+          <path fill="#0a0a0f" d="M20.28,65.65c-1.22-0.99-18.39-18.2-19.03-19.04c0.62-0.84,17.84-18.1,18.82-18.86 c0.28,0.1,0.22,0.35,0.23,0.56c0.01,0.31,0.01,0.63,0.01,0.94c0,11.63,0.01,23.26,0.01,34.89C20.32,64.58,20.3,65.02,20.28,65.65z"/>
+          <path fill="#0a0a0f" d="M48.67,88.63c0-13.45,0-26.8,0-40.22c0.28-0.06,0.53-0.13,0.78-0.15c0.36-0.03,0.71-0.01,1.07-0.01 c12.33,0,24.67-0.01,37-0.01c0.48,0,0.97-0.09,1.41,0.08c0.03,0.1,0.06,0.14,0.06,0.18c0,0.04-0.02,0.09-0.05,0.12 c-13.3,13.31-26.6,26.62-39.9,39.92C49,88.58,48.89,88.57,48.67,88.63z"/>
+        </svg>
+        <span class="logo-text inference" style="color:#0a0a0f;">Inference</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

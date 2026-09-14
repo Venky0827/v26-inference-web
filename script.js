@@ -71,8 +71,9 @@
         var el = document.getElementById(btn.getAttribute("data-copy"));
         if (!el) return;
         var prev = btn.textContent;
-        btn.textContent = "Copied";
-        setTimeout(function () { btn.textContent = prev; }, 1600);
+        btn.textContent = "Copied ✓";
+        btn.classList.add("copied");
+        setTimeout(function () { btn.textContent = prev; btn.classList.remove("copied"); }, 1600);
         try {
           var text = el.textContent || "";
           if (navigator.clipboard && navigator.clipboard.writeText) {
