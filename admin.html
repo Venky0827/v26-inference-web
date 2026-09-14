@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — V26 Inference</title><meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="nav"><a class="brand" href="/"><span class="brand-mark">V26</span><span>Inference</span></a><nav><a href="/">Public site</a></nav></header>
+<main class="narrow">
+<div class="section-label">Private · Admin</div>
+<h1>Waitlist responses</h1>
+<p style="color:var(--muted)">Phase 1 uses Google Forms + Google Sheets as the lead database. No custom auth, dashboard, or database in this phase. Open the linked Sheet for responses, charts, and CSV export (File → Download).</p>
+<div class="gform-card">
+<h3>Open lead database</h3>
+<p>Responses, timestamps, and Sheet charts live in Google's systems.</p>
+<a data-gform-sheet class="button primary" href="https://docs.google.com/spreadsheets/d/1LuBd1FhSykQhvDMChNomsCimscPAbYed0y5DaR19ftc/edit" target="_blank" rel="noopener noreferrer">Open Google Sheet →</a>
+<p class="form-note">Restricted to your team — do not share publicly. Funnel analytics (visitors → CTA clicks → form visits) are logged by analytics.js.</p>
+</div>
+<p style="color:var(--muted)">Setup checklist: see GOOGLE_FORM_SETUP.md in the repo.</p>
+</main>
+<script src="config.js"></script>
+<script>
+(function () {
+  var cfg = window.V26_CONFIG || {};
+  if (cfg.googleSheetUrl && cfg.googleSheetUrl.indexOf("SHEET_ID") < 0) {
+    document.querySelectorAll("[data-gform-sheet]").forEach(function (a) { a.href = cfg.googleSheetUrl; });
+  }
+})();
+</script>
+</body>
+</html>
