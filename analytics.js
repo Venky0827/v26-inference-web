@@ -1,21 +1,37 @@
 // V26 Inference — privacy-conscious analytics (Google Forms Phase 1).
-// Required funnel: landing_page_view → hero_cta_click / model_cta_click /
-// beta_cta_click → google_form_outbound_click → (registration in Google Sheets).
+// Required funnel (Phase 1.1 §7-8): page_view → hero_cta_click / model_cta_click /
+// beta_cta_click → google_form_click → (registration in Google Sheets).
+// Legacy aliases landing_page_view + google_form_outbound_click kept for continuity.
+// UTM (source/medium/campaign/content/term) persisted in localStorage so
+// attribution survives navigation (e.g. / → /early-access.html).
 // Default: local-only log. Forwards to Plausible/PostHog when their snippet exists.
 (function () {
   var KEY = "v26_analytics_v1";
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
   function read() { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } }
   function write(a) { try { localStorage.setItem(KEY, JSON.stringify(a.slice(-500))); } catch (e) {} }
+  function persistedUtm() {
+    var out = {};
+    try {
+      var p = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) {
+        var v = p.get(k);
+        if (v) { out[k] = v; try { localStorage.setItem("v26_" + k, v); } catch (e) {} }
+        else { try { var s = localStorage.getItem("v26_" + k); if (s) out[k] = s; } catch (e) {} }
+      });
+      var ref = p.get("ref");
+      if (ref) { out.ref = ref; try { localStorage.setItem("v26_ref", ref); } catch (e) {} }
+      else { try { var r = localStorage.getItem("v26_ref"); if (r) out.ref = r; } catch (e) {} }
+    } catch (e) {}
+    return out;
+  }
   function ctx() {
-    var p = new URLSearchParams(window.location.search);
-    return {
+    var base = {
       path: window.location.pathname,
-      utm_source: p.get("utm_source") || undefined,
-      utm_medium: p.get("utm_medium") || undefined,
-      utm_campaign: p.get("utm_campaign") || undefined,
       device: window.innerWidth < 780 ? "mobile" : "desktop",
       ts: new Date().toISOString()
     };
+    return Object.assign(base, persistedUtm());
   }
   function track(event, props) {
     var rec = Object.assign({ event: event }, ctx(), props || {});
@@ -36,7 +52,8 @@
   window.V26Analytics = { track: track };
   document.addEventListener("DOMContentLoaded", function () {
     if ((window.V26_CONFIG || {}).analyticsProvider === "none") return;
-    // 1. Landing page visit
+    // 1. Page visit — fire spec name page_view + legacy landing_page_view
+    track("page_view");
     track("landing_page_view");
     var seen = {};
     try {
@@ -56,12 +73,16 @@
       });
     });
     // 5. Google Form outbound click (all link-outs, with placement)
+    // Spec name google_form_click + legacy google_form_outbound_click.
+    // Primary goal metric: Visitor → Beta registration (Sheet is source of truth).
     document.querySelectorAll("[data-gform]").forEach(function (el) {
       el.addEventListener("click", function () {
-        track("google_form_outbound_click", {
+        var payload = {
           placement: el.getAttribute("data-track") || "unknown",
           href: (el.getAttribute("href") || "").slice(0, 200)
-        });
+        };
+        track("google_form_click", payload);
+        track("google_form_outbound_click", payload);
       });
     });
     document.querySelectorAll("#faq details summary").forEach(function (s) {

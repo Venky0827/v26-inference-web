@@ -24,10 +24,13 @@
       var page = new URLSearchParams(window.location.search);
       var cfg = window.V26_CONFIG || {};
       var prefill = cfg.googleFormPrefill || {};
-      var ref = page.get("ref");
-      if (ref) { try { localStorage.setItem("v26_ref", ref); } catch (e) {} }
-      else { try { ref = localStorage.getItem("v26_ref"); } catch (e) {} }
-      var names = { utm_source: page.get("utm_source"), utm_medium: page.get("utm_medium"), utm_campaign: page.get("utm_campaign"), utm_term: page.get("utm_term"), utm_content: page.get("utm_content"), ref: ref };
+      function persisted(k) {
+        var v = page.get(k);
+        if (v) { try { localStorage.setItem("v26_" + k, v); } catch (e) {} return v; }
+        try { return localStorage.getItem("v26_" + k); } catch (e) { return null; }
+      }
+      var ref = persisted("ref");
+      var names = { utm_source: persisted("utm_source"), utm_medium: persisted("utm_medium"), utm_campaign: persisted("utm_campaign"), utm_term: persisted("utm_term"), utm_content: persisted("utm_content"), ref: ref };
       Object.keys(names).forEach(function (k) {
         var v = names[k];
         if (!v) return;

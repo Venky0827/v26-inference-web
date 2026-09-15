@@ -27,10 +27,14 @@ No custom backend/auth in this phase.
 | 9 | Additional comments | Paragraph | No | e.g. current model/API in use |
 | 10 | I agree to receive V26 Inference beta and product updates (see v26-inference.com/privacy and /terms) | Multiple choice Yes/No or Checkbox | Yes (require Yes) | Consent evidence for §16 |
 
-## 3. Confirmation message (Settings → Presentation)
-> You're on the V26 early-access list.
+## 3. Confirmation message (Settings → Presentation) — Phase 1.1 exact text
+> You're on the V26 beta list.
 >
-> We'll notify you when Qwen3.8-27B API access opens.
+> We're preparing Qwen3.8-27B inference infrastructure now.
+>
+> We'll notify you when the API opens.
+>
+> Know a developer who needs affordable AI inference? Share V26 with them — send them to https://v26-inference.com.
 
 ## 4. Link to Sheets (Responses → Link to Sheets → Create)
 Recommended columns (auto Timestamp + your questions):
@@ -42,15 +46,16 @@ Sheet access: restricted to the team. Export via File → Download → CSV.
 - Sheet: copy its URL.
 - Paste both into `config.js` (`googleFormUrl`, `googleSheetUrl`) and `.env.example` (`GOOGLE_FORM_URL`, `GOOGLE_SHEET_URL`). All `[data-gform]` CTAs update automatically.
 
-## 6. UTM / source attribution (two layers)
-- **Always on (no setup):** the site appends `?utm_source=…&utm_medium=…&utm_campaign=…&ref=…` to the form URL and logs every CTA + outbound click in `analytics.js` (funnel: visitors → CTA clicks → form visits → Sheet registrations).
+## 6. UTM / source attribution (two layers) — Phase 1.1 §7
+- **Always on (no setup):** the site appends `?utm_source=…&utm_medium=…&utm_campaign=…&utm_content=…&utm_term=…&ref=…` to the form URL and logs every CTA + outbound click in `analytics.js` (funnel: `page_view → hero_cta_click / model_cta_click / beta_cta_click → google_form_click` → Sheet registrations = Visitor → Beta registration). UTM values persist in localStorage so attribution survives navigation (/ → /early-access.html).
 - **Inside the Sheet (optional, recommended):** Form → ⋮ → Get pre-filled link → fill a hidden/short field (e.g. `Referral / Source`) per UTM param → Get link → copy the `entry.XXXXXXXX` IDs → set `googleFormPrefill` in `config.js`, e.g. `{ utm_source: "entry.111", utm_campaign: "entry.222", ref: "entry.333" }`. Test with `https://v26-inference.com/?utm_source=linkedin&utm_medium=social&utm_campaign=beta-launch`.
 
 ## 7. Definition-of-Done test
-- [x] Form created, fields + Sheet linked, confirmation message set.
+- [x] Form created, fields + Sheet linked, confirmation message set (Phase 1.1 text + share line).
+- [x] Required fields minimized: only Email (verified), Use case, Expected monthly token usage. Name, Company, Current AI provider, Country/Region, Additional comments optional.
 - [x] URLs pasted in `config.js`; hero, announcement, model, and beta CTAs all open the form in a new tab (`target=_blank rel=noopener noreferrer`).
-- [x] Desktop + mobile CTA works; clicks log `hero_cta_click, model_cta_click, beta_cta_click, google_form_outbound_click`.
-- [x] Test submit with `?utm_source=test` appears in the Sheet; no live-API language anywhere on site.
+- [x] Desktop + mobile CTA works; clicks log `page_view, hero_cta_click, model_cta_click, beta_cta_click, google_form_click` (+ legacy aliases).
+- [x] Test submit with `?utm_source=test&utm_medium=social&utm_campaign=beta-launch&utm_content=hero` appears in the Sheet; no live-API language anywhere on site.
 
 As-built notes: Dropdowns have no free-text Other, so Q1/Q2 use a plain "Other" option
 plus a separate optional short-answer "If you chose Other above…". Q6/Q8 use native
