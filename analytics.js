@@ -333,9 +333,15 @@
       });
     });
 
-    document.querySelectorAll("#faq details summary").forEach(function (s) {
-      s.addEventListener("click", function () {
-        track("faq_open", { question: s.textContent.replace(/\s+/g, " ").trim().slice(0, 100) });
+    // The `toggle` event fires after the disclosure state changes and also
+    // covers keyboard activation. A click handler would count both opening
+    // and closing an answer as an "open" event.
+    document.querySelectorAll("#faq details").forEach(function (detail) {
+      detail.addEventListener("toggle", function () {
+        if (!detail.open) return;
+        var summary = detail.querySelector("summary");
+        if (!summary) return;
+        track("faq_open", { question: summary.textContent.replace(/\s+/g, " ").trim().slice(0, 100) });
       });
     });
 
