@@ -1,4 +1,8 @@
+# V26 Inference — https://v26-inference.com
+# Public pages are crawlable. Admin and internal pages are protected with
+# authentication/noindex rather than a robots.txt Disallow, so crawlers can
+# read their noindex directive.
 User-agent: *
 Allow: /
-Disallow: /admin.html
+
 Sitemap: https://v26-inference.com/sitemap.xml

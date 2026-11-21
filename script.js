@@ -1,22 +1,10 @@
 // V26 Inference — Google Forms link-out handler (Phase 1).
 // All registration CTAs ([data-gform]) share one URL from config.js and open
 // in a new tab. Appends UTM/ref for attribution: uses googleFormPrefill
-// entry-ID map when configured, else plain ?utm_*=&ref= params (always kept
-// in local analytics). See GOOGLE_FORM_SETUP.md.
+// entry-ID map when configured, else plain ?utm_*=&ref= params (also used by
+// the consent-gated analytics layer). See GOOGLE_FORM_SETUP.md.
 (function () {
-  function $(id) { return document.getElementById(id); }
-
-  // Cookie banner (local-only analytics notice).
-  try {
-    var banner = $("cookie-banner"), okBtn = $("cookie-ok");
-    if (banner && okBtn) {
-      if (!localStorage.getItem("v26_cookie_ok")) banner.hidden = false;
-      okBtn.addEventListener("click", function () {
-        localStorage.setItem("v26_cookie_ok", "1");
-        banner.hidden = true;
-      });
-    }
-  } catch (e) {}
+  // Analytics consent UI lives in analytics.js (Accept / Reject, persisted).
 
   function buildFormUrl(base) {
     try {

@@ -16,5 +16,17 @@ window.V26_CONFIG = {
   //    Leave {} to just append ?utm_source=…&ref=… (preserved in analytics regardless).
   googleFormPrefill: {},
   analyticsProvider: "local", // "local" | "plausible" | "posthog" | "none"
+  // Google Analytics 4 Measurement ID. Replace the placeholder with the ID from
+  // GA4 Admin → Data streams → your web stream (format: G-XXXXXXXXXX).
+  // GA4 is only loaded after the visitor explicitly accepts analytics cookies.
+  // The placeholder is rejected by analytics.js, so no requests are made until
+  // a real ID is configured.
+  ga4MeasurementId: "G-XXXXXXXXXX",
+  // Optional Google Search Console HTML-tag verification value. A Domain
+  // property is verified with a DNS TXT record instead (recommended). This value
+  // is documentation only — analytics.js does not inject verification meta tags;
+  // add the static <meta name="google-site-verification" ...> tag if you use the
+  // URL-prefix verification method. Do not paste Google's token anywhere else.
+  googleSiteVerification: "",
   contactEmail: "hello@v26-inference.com"
 };
