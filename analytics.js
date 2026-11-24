@@ -261,12 +261,18 @@
     var b = banner();
     if (!b) return;
     b.hidden = false;
+    b.style.display = ""; // fall back to the stylesheet (.cookie / mobile layout)
     b.setAttribute("tabindex", "-1");
-    b.focus({ preventScroll: true });
+    try { b.focus({ preventScroll: true }); } catch (e) { b.focus(); }
   }
   function hideBanner() {
     var b = banner();
-    if (b) b.hidden = true;
+    if (!b) return;
+    b.hidden = true;
+    // Inline style as well as [hidden]: a browser still holding an older cached
+    // stylesheet (Safari caches hard) would otherwise leave the banner on screen
+    // because .cookie { display:flex } wins over the UA [hidden] rule.
+    b.style.display = "none";
   }
   function updateConsentUi() {
     var label = consent === "granted" ? "Accepted" : consent === "denied" ? "Rejected" : "Not set";
