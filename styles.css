@@ -393,6 +393,9 @@ footer a:hover { color: var(--color-text-primary) !important; }
   box-shadow: 0 8px 24px rgba(16,24,40,.08);
 }
 .cookie { flex-wrap: wrap; }
+/* .cookie sets display:flex, which beats the UA rule for [hidden]. Without this
+   the banner stays on screen after Accept/Reject and the buttons appear dead. */
+.cookie[hidden] { display: none; }
 .cookie:focus { outline: none; }
 .cookie-copy { max-width: 560px; }
 .cookie-copy strong { display: block; color: var(--color-text-primary); font-size: 14px; font-weight: 600; margin-bottom: 2px; }
